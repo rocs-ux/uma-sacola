@@ -18,7 +18,6 @@
     </div>
     <div class="cat-grid" data-cat-grid>
       {% for p in products.list %}
-        {% set minUnit = p.prices[1000] / 1000 %}
         <article class="prod-card" data-size="{{ p.size }}">
           <div class="prod-image">
             <span class="size-chip">{{ p.size }}{% if p.orientation %} · {{ p.orientation }}{% endif %}</span>
@@ -32,12 +31,13 @@
                 {% set parts = price | brlParts %}
                 {% set unit = price / qty %}
                 <div class="prod-price-row">
-                  <span class="qty">{{ qty }} un</span>
+                  <span class="qty">{{ qty | ptNumber }} un{% if p.popularQty == qty %}<small class="qty-tag">mais escolhida</small>{% endif %}</span>
                   <span class="unit">{{ unit | brl }}/un</span>
                   <span class="price">R$ {{ parts.int }}<sub>,{{ parts.dec }}</sub></span>
                 </div>
               {% endfor %}
             </div>
+            {% if p.minOrder %}<p class="prod-min">Pedido mínimo: {{ p.minOrder }} unidades</p>{% endif %}
             <div class="prod-foot">
               <button data-open-quote
                       data-preset-size="{{ p.size }}"

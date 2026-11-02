@@ -1,7 +1,7 @@
 const PRICE_TABLE = {
-  PP: { 50: 149.90, 100: 279.90, 500: 1349.90, 1000: 2599.90 },
-  P:  { 50: 199.90, 100: 379.90, 500: 1799.90, 1000: 3499.90 },
-  M:  { 50: 399.90, 100: 789.90, 500: 3845.90, 1000: 7490.90 },
+  PP: { 100: 379.00, 200: 668.00, 500: 1545.00, 1000: 2990.00 },
+  P:  { 50: 262.00, 100: 439.00, 200: 788.00, 500: 1820.00, 1000: 3590.00 },
+  M:  { 50: 337.00, 100: 584.00, 200: 1078.00, 500: 2570.00, 1000: 5040.00 },
   G:  { 50: 599.90, 100: 1179.90, 500: 5749.90, 1000: 11190.90 },
 };
 
@@ -15,6 +15,7 @@ const list = [
     desc: "Ideal para acessórios pequenos como joias e brindes compactos.",
     photo: "images/sacola-pp-foto.png",
     prices: PRICE_TABLE.PP,
+    minOrder: 100,
   },
   {
     id: "p-vertical",
@@ -25,6 +26,7 @@ const list = [
     desc: "Ideal para acessórios pequenos e celulares na caixa.",
     photo: "images/sacola-p-vertical-foto.png",
     prices: PRICE_TABLE.P,
+    popularQty: 100,
   },
   {
     id: "p-horizontal",

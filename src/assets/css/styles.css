@@ -369,6 +369,8 @@ p { margin: 0; text-wrap: pretty; }
 }
 .prod-price-row:last-child { border-bottom: 0; }
 .prod-price-row .qty { opacity: 0.9; }
+.prod-price-row .qty-tag { display: block; font-size: 11px; font-weight: 600; line-height: 1.2; }
+.prod-min { margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--ink-500); }
 .prod-price-row .unit {
   font-size: 13px;
   opacity: 0.85;
@@ -512,6 +514,7 @@ input[type="range"].qty-slider::-moz-range-thumb {
 }
 .qty-presets button:hover { color: var(--navy-800); }
 .qty-presets button.active { background: var(--navy-800); color: white; }
+.qty-presets button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* Right side: preview + total */
 .calc-right .label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); }
@@ -539,10 +542,11 @@ input[type="range"].qty-slider::-moz-range-thumb {
 .calc-total-card .grand .l { color: rgba(255,255,255,0.85); font-size: 13px; }
 .calc-total-card .grand .r {
   font-family: var(--font-display); font-weight: 800; font-size: 36px; color: white; line-height: 1;
+  white-space: nowrap;
 }
 .calc-total-card .grand .r sub { font-size: 16px; opacity: 0.85; font-weight: 600; }
 @media (max-width: 560px) {
-  .calc-total-card .grand .r { font-size: 28px; }
+  .calc-total-card .grand .r { font-size: min(28px, 6.5vw); }
   .calc-total-card .grand .r sub { font-size: 14px; }
 }
 

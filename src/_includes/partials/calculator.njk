@@ -45,11 +45,11 @@
         <div class="calc-field">
           <div class="label">
             <span>Quantidade</span>
-            <span class="val" data-qty-val>250 un.</span>
+            <span class="val" data-qty-val>100 un.</span>
           </div>
           <div class="qty-presets">
-            {% for p in [50, 100, 250, 500, 1000, 2000] %}
-              <button class="{% if p == 250 %}active{% endif %}" data-preset="{{ p }}">{{ p | ptNumber }}</button>
+            {% for p in [50, 100, 200, 500, 1000, 2000, 5000] %}
+              <button class="{% if p == 100 %}active{% endif %}" data-preset="{{ p }}">{{ p | ptNumber }}</button>
             {% endfor %}
           </div>
         </div>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="calc-total-card">
-          <div class="row"><span data-summary-line>Sacola M · Horizontal</span><b><span data-summary-qty>250</span> un.</b></div>
+          <div class="row"><span data-summary-line>Sacola M · Horizontal</span><b><span data-summary-qty>100</span> un.</b></div>
           <div class="row"><span>Valor por unidade</span><b data-unit-price>R$ 0,00</b></div>
           <div class="row"><span>Impressão 4 cores + alça</span><b>Incluso</b></div>
           <div class="divider"></div>

@@ -6,25 +6,21 @@
      Pricing data (mirrors src/_data/products.js)
      ===================================================== */
   const PRICE_TABLE = {
-    PP: { 50: 149.90, 100: 279.90, 500: 1349.90, 1000: 2599.90 },
-    P:  { 50: 199.90, 100: 379.90, 500: 1799.90, 1000: 3499.90 },
-    M:  { 50: 399.90, 100: 789.90, 500: 3845.90, 1000: 7490.90 },
+    PP: { 100: 379.00, 200: 668.00, 500: 1545.00, 1000: 2990.00 },
+    P:  { 50: 262.00, 100: 439.00, 200: 788.00, 500: 1820.00, 1000: 3590.00 },
+    M:  { 50: 337.00, 100: 584.00, 200: 1078.00, 500: 2570.00, 1000: 5040.00 },
     G:  { 50: 599.90, 100: 1179.90, 500: 5749.90, 1000: 11190.90 },
   };
 
+  // A partir de 1.000 unidades, vale o mesmo valor por sacola de 1.000.
   function priceFor(size, qty) {
     const table = PRICE_TABLE[size];
-    const breakpoints = [50, 100, 500, 1000];
-    if (qty <= 50) return (table[50] / 50) * qty;
-    for (let i = 0; i < breakpoints.length - 1; i++) {
-      const a = breakpoints[i], b = breakpoints[i + 1];
-      if (qty >= a && qty <= b) {
-        const pa = table[a] / a, pb = table[b] / b;
-        const t = (qty - a) / (b - a);
-        return (pa + (pb - pa) * t) * qty;
-      }
-    }
-    return (table[1000] / 1000) * qty;
+    if (qty >= 1000) return Math.round(table[1000] / 1000 * qty * 100) / 100;
+    return table[qty];
+  }
+
+  function isAvailable(size, qty) {
+    return qty >= 1000 || qty in PRICE_TABLE[size];
   }
 
   const ptNumber = (n) => Number(n).toLocaleString("pt-BR");
@@ -77,7 +73,7 @@
     const root = document.querySelector("[data-calc]");
     if (!root) return;
 
-    const state = { size: "M", orientation: "Horizontal", qty: 250 };
+    const state = { size: "M", orientation: "Horizontal", qty: 100 };
 
     const sizeButtons = root.querySelectorAll("[data-size]");
     const orientButtons = root.querySelectorAll("[data-orientation]");
@@ -126,7 +122,10 @@
 
       sizeButtons.forEach((b) => b.classList.toggle("active", b.dataset.size === state.size));
       orientButtons.forEach((b) => b.classList.toggle("active", b.dataset.orientation === state.orientation));
-      presets.forEach((b) => b.classList.toggle("active", Number(b.dataset.preset) === state.qty));
+      presets.forEach((b) => {
+        b.classList.toggle("active", Number(b.dataset.preset) === state.qty);
+        b.disabled = !isAvailable(state.size, Number(b.dataset.preset));
+      });
 
       if (calcCta) {
         calcCta.dataset.presetSize = state.size;
@@ -140,6 +139,7 @@
     sizeButtons.forEach((b) => {
       b.addEventListener("click", () => {
         state.size = b.dataset.size;
+        if (!isAvailable(state.size, state.qty)) state.qty = 100;
         render();
       });
     });

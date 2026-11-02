@@ -1,7 +1,7 @@
 module.exports = [
   {
     q: "Qual é o pedido mínimo?",
-    a: "Trabalhamos a partir de 50 unidades por modelo.",
+    a: "Trabalhamos a partir de 50 unidades por modelo. Na Sacola PP, o pedido mínimo é de 100 unidades.",
   },
   {
     q: "Qual o prazo de produção e entrega?",
