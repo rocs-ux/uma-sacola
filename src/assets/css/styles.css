@@ -1234,6 +1234,48 @@ input[type="range"].qty-slider::-moz-range-thumb {
   .example-card { width: 78vw; }
 }
 
+/* ====================== VÍDEOS DE CLIENTES ====================== */
+.video-proof {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 0 auto 48px;
+}
+.video-card { margin: 0; width: 300px; max-width: calc(50% - 6px); }
+.video-frame {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--navy-900);
+  box-shadow: var(--shadow-lg);
+}
+.video-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-play {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  border: 0; padding: 0; cursor: pointer;
+  background: linear-gradient(to top, rgba(7, 37, 76, 0.35), rgba(7, 37, 76, 0) 55%);
+}
+.video-play span {
+  width: 68px; height: 68px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--amber-400); color: var(--navy-900);
+  box-shadow: 0 10px 24px rgba(7, 37, 76, 0.3);
+  transition: transform .2s;
+}
+.video-play svg { margin-left: 3px; }
+.video-play:hover span { transform: scale(1.08); }
+.video-card.playing .video-play { display: none; }
+.video-card figcaption {
+  margin-top: 12px; text-align: center;
+  font-size: 13.5px; font-weight: 600; color: var(--ink-500);
+}
+@media (max-width: 640px) {
+  .video-proof { gap: 12px; margin-bottom: 32px; }
+  .video-play span { width: 52px; height: 52px; }
+}
+
 /* ====================== WHATSAPP FLOAT ====================== */
 .wa-float {
   position: fixed;

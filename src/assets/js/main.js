@@ -417,6 +417,34 @@
   }
 
   /* =====================================================
+     Vídeos de clientes (prova social)
+     ===================================================== */
+  function initVideoProof() {
+    const root = document.querySelector("[data-video-proof]");
+    if (!root) return;
+    const videos = root.querySelectorAll("video");
+    const pauseOthers = (current) => videos.forEach((v) => { if (v !== current) v.pause(); });
+
+    root.querySelectorAll(".video-card").forEach((card) => {
+      const video = card.querySelector("video");
+      const playBtn = card.querySelector(".video-play");
+      playBtn.addEventListener("click", () => {
+        pauseOthers(video);
+        card.classList.add("playing");
+        video.controls = true;
+        video.play();
+      });
+      video.addEventListener("play", () => pauseOthers(video));
+      video.addEventListener("ended", () => {
+        card.classList.remove("playing");
+        video.controls = false;
+        video.load(); // volta a mostrar a capa
+      });
+    });
+  }
+
+  /* =====================================================
+     WhatsApp quote  /* =====================================================
      WhatsApp quote
      ===================================================== */
   const WHATSAPP_NUMBER = "5541987425892";
@@ -467,6 +495,7 @@
     initMockup();
     initExamples();
     initTestimonialsCarousel();
+    initVideoProof();
     initWhatsApp();
   });
 })();

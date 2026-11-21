@@ -10,6 +10,24 @@
     </div>
   </div>
 
+  {% if videoTestimonials and videoTestimonials.length %}
+  <div class="container">
+    <div class="video-proof" data-video-proof>
+      {% for v in videoTestimonials %}
+        <figure class="video-card">
+          <div class="video-frame">
+            <video src="/{{ v.src }}" poster="/{{ v.poster }}" preload="none" playsinline></video>
+            <button class="video-play" type="button" aria-label="Assistir vídeo de {{ v.name }}">
+              <span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            </button>
+          </div>
+          <figcaption>{{ v.name }}</figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
   {% set senderColors = ["#1f7aec", "#16a085", "#9b59b6", "#e67e22", "#c0392b", "#2c3e50"] %}
 
   <div class="wa-carousel">
