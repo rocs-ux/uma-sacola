@@ -74,7 +74,7 @@ const list = [
 module.exports = {
   list,
   priceTable: PRICE_TABLE,
-  sizes: ["PP", "P", "M"],
+  sizes: ["PP", "P", "M", "Vinho"],
   orientations: ["Vertical", "Horizontal"],
   filters: ["Todos", "PP", "P", "M", "Vinho"],
 };

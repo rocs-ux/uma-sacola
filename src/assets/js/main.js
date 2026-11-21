@@ -10,7 +10,11 @@
     P:  { 50: 262.00, 100: 439.00, 200: 788.00, 500: 1820.00, 1000: 3590.00 },
     M:  { 50: 337.00, 100: 584.00, 200: 1078.00, 500: 2570.00, 1000: 5040.00 },
     G:  { 50: 599.90, 100: 1179.90, 500: 5749.90, 1000: 11190.90 },
+    Vinho: { 50: 357.00, 100: 624.00, 200: 1158.00, 500: 2770.00, 1000: 5440.00 },
   };
+
+  // Tamanhos sem escolha de orientação (vertical/horizontal).
+  const hasOrientation = (size) => size !== "PP" && size !== "Vinho";
 
   // A partir de 1.000 unidades, vale o mesmo valor por sacola de 1.000.
   function priceFor(size, qty) {
@@ -97,6 +101,7 @@
         case "PP": return "/images/sacola-pp-foto.jpeg";
         case "P":  return horiz ? "/images/sacola-p-horizontal-foto.jpeg" : "/images/sacola-p-vertical-foto.jpeg";
         case "M":  return horiz ? "/images/sacola-m-horizontal-foto.jpeg" : "/images/sacola-m-vertical-foto.jpeg";
+        case "Vinho": return "/images/catalogo-m-vinho.jpg";
         case "G":  return "/images/sacola-m-hero.jpeg";
         default:   return "/images/sacola-m-hero.jpeg";
       }
@@ -112,13 +117,13 @@
       qtyVal.textContent = ptNumber(state.qty) + " un.";
       previewImg.src = previewSrc();
 
-      summaryLine.textContent = "Sacola " + state.size + (state.size !== "PP" ? " · " + state.orientation : "");
+      summaryLine.textContent = "Sacola " + state.size + (hasOrientation(state.size) ? " · " + state.orientation : "");
       summaryQty.textContent = ptNumber(state.qty);
       unitPrice.textContent = formatBRL(unit);
       totalInt.textContent = ptNumber(Number(intPart));
       totalDec.textContent = decPart;
 
-      if (orientField) orientField.style.display = state.size === "PP" ? "none" : "";
+      if (orientField) orientField.style.display = hasOrientation(state.size) ? "" : "none";
 
       sizeButtons.forEach((b) => b.classList.toggle("active", b.dataset.size === state.size));
       orientButtons.forEach((b) => b.classList.toggle("active", b.dataset.orientation === state.orientation));
@@ -129,7 +134,7 @@
 
       if (calcCta) {
         calcCta.dataset.presetSize = state.size;
-        calcCta.dataset.presetOrientation = state.size === "PP" ? "" : state.orientation;
+        calcCta.dataset.presetOrientation = hasOrientation(state.size) ? state.orientation : "";
         calcCta.dataset.presetQty = String(state.qty);
         calcCta.dataset.presetTotal = total.toFixed(2);
         calcCta.dataset.presetUnit = unit.toFixed(2);
