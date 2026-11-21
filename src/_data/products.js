@@ -3,6 +3,7 @@ const PRICE_TABLE = {
   P:  { 50: 262.00, 100: 439.00, 200: 788.00, 500: 1820.00, 1000: 3590.00 },
   M:  { 50: 337.00, 100: 584.00, 200: 1078.00, 500: 2570.00, 1000: 5040.00 },
   G:  { 50: 599.90, 100: 1179.90, 500: 5749.90, 1000: 11190.90 },
+  Vinho: { 50: 357.00, 100: 624.00, 200: 1158.00, 500: 2770.00, 1000: 5440.00 },
 };
 
 const list = [
@@ -13,7 +14,7 @@ const list = [
     orientation: null,
     dims: "10 × 17 × 3,5 cm",
     desc: "Ideal para acessórios pequenos como joias e brindes compactos.",
-    photo: "images/sacola-pp-foto.png",
+    photo: "images/catalogo-pp.jpg",
     prices: PRICE_TABLE.PP,
     minOrder: 100,
   },
@@ -22,9 +23,9 @@ const list = [
     name: "Sacola P",
     size: "P",
     orientation: "Vertical",
-    dims: "13,5 × 20 × 5 cm",
+    dims: "13,5 × 24,7 × 6 cm",
     desc: "Ideal para acessórios pequenos e celulares na caixa.",
-    photo: "images/sacola-p-vertical-foto.png",
+    photo: "images/catalogo-p-vertical.jpg",
     prices: PRICE_TABLE.P,
     popularQty: 100,
   },
@@ -35,7 +36,7 @@ const list = [
     orientation: "Horizontal",
     dims: "20 × 14 × 6 cm",
     desc: "Ideal para acessórios pequenos e celulares na caixa.",
-    photo: "images/sacola-p-horizontal-foto.png",
+    photo: "images/catalogo-p-horizontal.jpg",
     prices: PRICE_TABLE.P,
   },
   {
@@ -45,7 +46,7 @@ const list = [
     orientation: "Vertical",
     dims: "19 × 28 × 8 cm",
     desc: "Ideal para tablets, headphones e perfumes importados.",
-    photo: "images/sacola-m-vertical-foto.jpeg",
+    photo: "images/catalogo-m-vertical.jpg",
     prices: PRICE_TABLE.M,
   },
   {
@@ -55,8 +56,18 @@ const list = [
     orientation: "Horizontal",
     dims: "28 × 20 × 10 cm",
     desc: "Ideal para tablets, headphones e perfumes importados.",
-    photo: "images/sacola-m-horizontal-foto.jpeg",
+    photo: "images/catalogo-m-horizontal.jpg",
     prices: PRICE_TABLE.M,
+  },
+  {
+    id: "vinho",
+    name: "Sacola Vinho",
+    size: "Vinho",
+    orientation: null,
+    dims: "12 × 34 × 9 cm",
+    desc: "Ideal para garrafas de vinho, espumante e azeite.",
+    photo: "images/catalogo-m-vinho.jpg",
+    prices: PRICE_TABLE.Vinho,
   },
 ];
 
@@ -65,5 +76,5 @@ module.exports = {
   priceTable: PRICE_TABLE,
   sizes: ["PP", "P", "M"],
   orientations: ["Vertical", "Horizontal"],
-  filters: ["Todos", "PP", "P", "M"],
+  filters: ["Todos", "PP", "P", "M", "Vinho"],
 };
