@@ -767,14 +767,20 @@ input[type="range"].qty-slider::-moz-range-thumb {
 }
 .wa-swiper {
   overflow: hidden;
-  padding-bottom: 44px;
+  padding: 4px 0 44px;
 }
 .wa-swiper .swiper-wrapper {
   align-items: stretch;
+  transition-timing-function: linear !important;
+  -webkit-transition-timing-function: linear !important;
 }
 .wa-swiper .swiper-slide {
+  width: 400px;
   height: auto;
   display: flex;
+}
+@media (max-width: 720px) {
+  .wa-swiper .swiper-slide { width: 86vw; }
 }
 .wa-swiper .swiper-slide .wa-chat {
   margin: 0;

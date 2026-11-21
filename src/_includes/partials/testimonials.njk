@@ -33,7 +33,7 @@
   <div class="wa-carousel">
     <div class="swiper wa-swiper" data-testimonials-swiper>
         <div class="swiper-wrapper">
-          {% for t in testimonials %}
+          {% for t in testimonials.concat(testimonials) %}
             {% set color = senderColors[loop.index0 % senderColors.length] %}
             <div class="swiper-slide">
               <div class="wa-chat">
@@ -104,9 +104,6 @@
           {% endfor %}
         </div>
 
-      <button class="swiper-button-prev wa-nav wa-nav-prev" aria-label="Depoimento anterior" type="button"></button>
-      <button class="swiper-button-next wa-nav wa-nav-next" aria-label="Próximo depoimento" type="button"></button>
-      <div class="swiper-pagination wa-pagination"></div>
     </div>
   </div>
 </section>

@@ -370,50 +370,26 @@
   function initTestimonialsCarousel() {
     const el = document.querySelector("[data-testimonials-swiper]");
     if (!el || typeof window.Swiper === "undefined") return;
-    const swiper = new window.Swiper(el, {
-      slidesPerView: 1.1,
-      spaceBetween: 16,
+    // Rolagem contínua, igual ao carrossel de sacolas, só que mais lenta
+    // (speed = tempo em ms para passar um cartão; quanto maior, mais devagar).
+    new window.Swiper(el, {
+      slidesPerView: "auto",
+      spaceBetween: 20,
       loop: true,
-      centeredSlides: true,
-      speed: 600,
+      loopAdditionalSlides: 3,
+      speed: 7000,
+      allowTouchMove: true,
       grabCursor: true,
-      observer: true,
-      observeParents: true,
-      resizeObserver: true,
-      watchOverflow: true,
       autoplay: {
-        delay: 6500,
+        delay: 0,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
-      pagination: {
-        el: el.querySelector(".swiper-pagination"),
-        clickable: true,
-      },
-      navigation: {
-        prevEl: el.querySelector(".swiper-button-prev"),
-        nextEl: el.querySelector(".swiper-button-next"),
-      },
-      keyboard: { enabled: true },
-      breakpoints: {
-        560: { slidesPerView: 1.4, spaceBetween: 20, centeredSlides: true },
-        820: { slidesPerView: 2.2, spaceBetween: 20, centeredSlides: true },
-        1200: { slidesPerView: 3.2, spaceBetween: 24, centeredSlides: true },
-        1600: { slidesPerView: 3.4, spaceBetween: 28, centeredSlides: true },
-      },
-      on: {
-        afterInit(s) { requestAnimationFrame(() => s.update()); },
+      freeMode: {
+        enabled: true,
+        momentum: false,
       },
     });
-    const forceUpdate = () => swiper.update();
-    if (document.readyState === "complete") {
-      requestAnimationFrame(forceUpdate);
-    } else {
-      window.addEventListener("load", forceUpdate, { once: true });
-    }
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(forceUpdate);
-    }
   }
 
   /* =====================================================
