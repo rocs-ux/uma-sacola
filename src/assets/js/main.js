@@ -98,9 +98,9 @@
     function previewSrc() {
       const horiz = state.orientation === "Horizontal";
       switch (state.size) {
-        case "PP": return "/images/sacola-pp-foto.jpeg";
-        case "P":  return horiz ? "/images/sacola-p-horizontal-foto.jpeg" : "/images/sacola-p-vertical-foto.jpeg";
-        case "M":  return horiz ? "/images/sacola-m-horizontal-foto.jpeg" : "/images/sacola-m-vertical-foto.jpeg";
+        case "PP": return "/images/catalogo-pp.jpg";
+        case "P":  return horiz ? "/images/catalogo-p-horizontal.jpg" : "/images/catalogo-p-vertical.jpg";
+        case "M":  return horiz ? "/images/catalogo-m-horizontal.jpg" : "/images/catalogo-m-vertical.jpg";
         case "Vinho": return "/images/catalogo-m-vinho.jpg";
         case "G":  return "/images/sacola-m-hero.jpeg";
         default:   return "/images/sacola-m-hero.jpeg";
