@@ -66,7 +66,7 @@ const list = [
     orientation: null,
     dims: "12 × 34 × 9 cm",
     desc: "Ideal para garrafas de vinho, espumante e azeite.",
-    photo: "images/catalogo-m-vinho.jpg",
+    photo: "images/catalogo-vinho.jpg",
     prices: PRICE_TABLE.Vinho,
   },
 ];
