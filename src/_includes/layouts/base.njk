@@ -12,15 +12,26 @@
   })(window,document,'script','dataLayer','GTM-NDPPP98X');</script>
   <!-- End Google Tag Manager -->
 
-  <title>{{ site.title }}</title>
-  <meta name="description" content="Sacolas de papel personalizadas para empresas — produção nacional, entrega em todo o Brasil." />
+  <title>{{ title or site.title }}</title>
+  <meta name="description" content="{{ description or 'Sacolas de papel personalizadas para empresas — produção nacional, entrega em todo o Brasil.' }}" />
+  {% if ogImage %}
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ title or site.title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:image" content="{{ ogImage }}" />
+  {% endif %}
   <link rel="icon" type="image/png" href="/images/logo.png" />
   <link rel="apple-touch-icon" href="/images/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {% if pageCss %}
+  <link href="{{ pageFonts }}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ pageCss }}" />
+  {% else %}
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  {% endif %}
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -28,7 +39,9 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   {{ content | safe }}
+  {% if not pageCss %}
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
+  {% endif %}
 </body>
 </html>

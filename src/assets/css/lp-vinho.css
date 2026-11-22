@@ -1,0 +1,449 @@
+/* =========================================================
+   Landing page — Sacola de Vinho
+   Linha "premium" da Uma Sacola: creme, dourado e azul-marinho.
+   ========================================================= */
+:root {
+  --cream: #f4ecdd;
+  --cream-2: #ebdfc9;
+  --paper: #fbf7ef;
+  --gold: #a8833a;
+  --gold-soft: #ddc89b;
+  --gold-deep: #85652a;
+  --ink: #2b2219;
+  --ink-2: #5e5246;
+  --navy: #07254c;
+  --navy-2: #0b2e5c;
+  --night: #15100c;
+  --wa: #25d366;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --wrap: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 600; line-height: 1.1; }
+p { margin: 0; }
+.nowrap { white-space: nowrap; }
+
+.lp { overflow-x: clip; font-variant-numeric: lining-nums; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 14px;
+}
+
+/* ---------- Botões ---------- */
+.lp-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 28px;
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.lp-btn:hover { transform: translateY(-1px); }
+.lp-btn svg { flex: none; }
+.lp-btn-primary { background: var(--navy); color: var(--paper); }
+.lp-btn-primary:hover { background: var(--navy-2); }
+.lp-btn-gold { background: var(--gold); color: #fff; }
+.lp-btn-gold:hover { background: var(--gold-deep); }
+.lp-btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
+.lp-btn-outline:hover { background: var(--navy); color: var(--paper); }
+.lp-btn-sm { padding: 10px 18px; font-size: 13.5px; }
+
+/* ---------- Topo ---------- */
+.lp-topbar {
+  background: var(--navy);
+  color: rgba(251, 247, 239, 0.86);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 8px 16px;
+}
+.lp-topbar .dot { margin: 0 10px; color: var(--gold-soft); }
+
+.lp-header {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.lp-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.lp-brand img:first-child { border-radius: 9px; }
+.lp-wordmark { height: 28px; width: auto; }
+.lp-wordmark.light { filter: brightness(0) invert(1); }
+
+/* ---------- Hero ---------- */
+.lp-hero {
+  position: relative;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 24px 24px 72px;
+}
+.lp-hero-word {
+  position: absolute;
+  left: 50%; top: 92px;
+  transform: translateX(-50%);
+  width: max-content;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.lp-hero-word .big {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(130px, 21vw, 290px);
+  line-height: 0.82;
+  letter-spacing: 0.06em;
+  color: var(--gold-soft);
+  opacity: 0.75;
+}
+.lp-hero-word .small {
+  position: absolute;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 30px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.lp-hero-word .tl { left: 4px; top: -36px; }
+.lp-hero-word .br { right: 4px; bottom: -34px; font-size: clamp(15px, 1.5vw, 21px); letter-spacing: 0.16em; }
+
+.lp-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 380px) 1fr;
+  align-items: end;
+  gap: 40px;
+  padding-top: 20px;
+}
+.lp-hero-left h1 { color: var(--ink); }
+.lp-hero-left .caps {
+  display: block;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.lp-hero-left em {
+  display: block;
+  margin-top: 6px;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(34px, 3.6vw, 50px);
+  color: var(--gold-deep);
+}
+
+.lp-arch { position: relative; aspect-ratio: 2 / 2.9; }
+.lp-arch-frame {
+  position: absolute;
+  inset: -14px;
+  border: 1px solid var(--gold);
+  border-radius: 999px 999px 4px 4px;
+}
+.lp-arch-img {
+  position: absolute; inset: 0;
+  border-radius: 999px 999px 2px 2px;
+  overflow: hidden;
+  background: var(--cream-2);
+  box-shadow: 0 30px 60px -20px rgba(43, 34, 25, 0.45);
+}
+.lp-arch-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+
+.lp-hero-right { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-bottom: 6px; }
+.lp-hero-right p { color: var(--ink-2); font-size: 15.5px; max-width: 340px; }
+.lp-hero-note { font-size: 13px; color: var(--ink-2); }
+
+/* ---------- Frase ---------- */
+.lp-quote {
+  position: relative;
+  background: var(--cream-2);
+  padding: 72px 24px 64px;
+  text-align: center;
+}
+.lp-quote blockquote {
+  margin: 0 auto;
+  max-width: 720px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.3;
+  color: var(--ink);
+}
+.lp-quote .q {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  font-family: var(--serif);
+  font-size: 110px;
+  line-height: 1;
+  color: var(--gold);
+}
+.lp-quote .q-open { left: max(24px, calc(50% - 470px)); }
+.lp-quote .q-close { right: max(24px, calc(50% - 470px)); }
+.lp-quote-by {
+  margin-top: 26px;
+  display: inline-flex; align-items: center; gap: 12px; text-align: left;
+}
+.lp-quote-by img { border-radius: 50%; }
+.lp-quote-by strong { display: block; font-size: 14px; }
+.lp-quote-by span { display: block; font-size: 12.5px; color: var(--ink-2); }
+
+/* ---------- Estilos (painéis escuros) ---------- */
+.lp-styles { background: var(--night); color: var(--paper); padding-top: 64px; }
+.lp-styles-head { text-align: center; padding: 0 24px 40px; }
+.lp-styles-head .eyebrow { color: var(--gold-soft); }
+.lp-styles-head h2 { font-size: clamp(32px, 3.6vw, 46px); font-weight: 500; }
+.lp-panels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.lp-panel {
+  position: relative;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  background: #1c1510;
+}
+.lp-panel-img { position: relative; aspect-ratio: 2 / 3; overflow: hidden; }
+.lp-panel-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s ease;
+}
+.lp-panel:hover .lp-panel-img img { transform: scale(1.04); }
+.lp-panel-img::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0; height: 22%;
+  background: linear-gradient(to top, #1c1510 0%, rgba(28, 21, 16, 0) 100%);
+}
+.lp-panel-body {
+  position: relative;
+  flex: 1;
+  margin-top: -28px;
+  padding: 0 24px 34px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.lp-panel-body h3 { font-size: 32px; font-weight: 500; }
+.lp-panel-body p { font-size: 14px; color: rgba(251, 247, 239, 0.8); max-width: 260px; }
+.lp-panel-body .lp-btn { margin-top: auto; }
+.lp-panel-body p + .lp-btn { margin-top: 8px; }
+.lp-styles-note {
+  padding: 18px 24px 22px;
+  text-align: center;
+  font-size: 12.5px;
+  color: rgba(251, 247, 239, 0.6);
+}
+.lp-styles-note .swipe { display: none; }
+
+/* ---------- Especificações ---------- */
+.lp-specs {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 96px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.lp-specs-photo img { width: 100%; border-radius: 2px; box-shadow: 0 24px 50px -24px rgba(43, 34, 25, 0.4); }
+.lp-specs-body h2 { font-size: clamp(32px, 3.4vw, 44px); margin-bottom: 28px; }
+.lp-specs-body ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.lp-specs-body li { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 22px; border-bottom: 1px solid rgba(168, 131, 58, 0.3); }
+.lp-specs-body li:last-child { border-bottom: 0; padding-bottom: 0; }
+.lp-specs-body .ico {
+  flex: none; width: 44px; height: 44px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.lp-specs-body .ico svg { width: 20px; height: 20px; fill: none; stroke: var(--gold-deep); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.lp-specs-body strong { display: block; font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.2; }
+.lp-specs-body li span:not(.ico) { display: block; font-size: 14.5px; color: var(--ink-2); margin-top: 2px; }
+
+/* ---------- Preços ---------- */
+.lp-prices {
+  background: var(--paper);
+  padding: 96px 24px;
+  text-align: center;
+}
+.lp-prices h2 { font-size: clamp(30px, 3.4vw, 44px); max-width: 640px; margin: 0 auto 40px; }
+.lp-price-table { max-width: 720px; margin: 0 auto 36px; text-align: left; }
+.lp-price-table .row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(168, 131, 58, 0.28);
+}
+.lp-price-table .row.head {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep);
+  padding-top: 0; padding-bottom: 12px;
+}
+.lp-price-table .row > span:nth-child(2),
+.lp-price-table .row > span:nth-child(3) { text-align: right; }
+.lp-price-table .qty { font-weight: 500; }
+.lp-price-table .unit { font-family: var(--serif); font-size: 24px; font-weight: 600; }
+.lp-price-table .total { color: var(--ink-2); font-size: 15px; }
+.lp-price-table .row.best { background: var(--cream); }
+.lp-price-table .tag {
+  display: inline-block; margin-left: 8px;
+  font-style: normal; font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--gold-deep); border: 1px solid var(--gold); padding: 2px 8px; border-radius: 999px;
+  vertical-align: middle;
+}
+.lp-prices-note { margin-top: 18px; font-size: 13px; color: var(--ink-2); }
+
+/* ---------- Como funciona ---------- */
+.lp-steps { max-width: var(--wrap); margin: 0 auto; padding: 96px 24px; text-align: center; }
+.lp-steps h2 { font-size: clamp(30px, 3.4vw, 44px); margin-bottom: 48px; }
+.lp-steps ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: left; }
+.lp-steps li { border-top: 1px solid var(--gold); padding-top: 22px; }
+.lp-steps .n { display: block; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--gold); margin-bottom: 12px; }
+.lp-steps strong { display: block; font-family: var(--serif); font-size: 24px; font-weight: 600; margin-bottom: 6px; }
+.lp-steps li > span:last-child { font-size: 14.5px; color: var(--ink-2); }
+
+/* ---------- Dúvidas ---------- */
+.lp-faq { background: var(--cream-2); padding: 96px 24px; text-align: center; }
+.lp-faq h2 { font-size: clamp(30px, 3.4vw, 44px); margin-bottom: 36px; }
+.lp-faq-list { max-width: 760px; margin: 0 auto; text-align: left; }
+.lp-faq details { border-bottom: 1px solid rgba(168, 131, 58, 0.35); }
+.lp-faq summary {
+  list-style: none; cursor: pointer;
+  padding: 20px 36px 20px 0;
+  position: relative;
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+}
+.lp-faq summary::-webkit-details-marker { display: none; }
+.lp-faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-family: var(--sans); font-weight: 400; font-size: 24px; color: var(--gold);
+}
+.lp-faq details[open] summary::after { content: "–"; }
+.lp-faq details p { padding: 0 0 22px; color: var(--ink-2); font-size: 15px; }
+
+/* ---------- CTA final ---------- */
+.lp-final {
+  background: var(--navy);
+  color: var(--paper);
+  text-align: center;
+  padding: 96px 24px;
+}
+.lp-final h2 { font-size: clamp(36px, 4.6vw, 60px); font-weight: 500; font-style: italic; margin-bottom: 16px; }
+.lp-final p { color: rgba(251, 247, 239, 0.78); margin-bottom: 32px; }
+
+/* ---------- Rodapé ---------- */
+.lp-footer {
+  background: #041a37;
+  color: rgba(251, 247, 239, 0.72);
+  text-align: center;
+  padding: 48px 24px 96px;
+  font-size: 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.lp-footer-brand { display: flex; align-items: center; gap: 10px; }
+.lp-footer-brand img:first-child { border-radius: 8px; }
+.lp-footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; }
+.lp-footer-links a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--paper); }
+.lp-footer-links a:hover { color: var(--gold-soft); }
+.lp-footer small { color: rgba(251, 247, 239, 0.45); }
+
+/* ---------- WhatsApp flutuante ---------- */
+.lp-wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 50;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: var(--wa); color: #fff;
+  display: grid; place-items: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0; transform: translateY(16px); pointer-events: none;
+  transition: opacity .25s, transform .25s;
+}
+.lp-wa-float.show { opacity: 1; transform: none; pointer-events: auto; }
+
+/* =========================================================
+   Celular e tablet
+   ========================================================= */
+@media (max-width: 960px) {
+  .lp-hero { padding: 8px 20px 56px; }
+  .lp-hero-word { position: relative; left: auto; top: auto; transform: none; margin: 12px auto 0; text-align: center; }
+  .lp-hero-word .big { font-size: 23vw; letter-spacing: 0.04em; opacity: 0.9; }
+  .lp-hero-word .small { position: static; display: block; font-size: 14px; letter-spacing: 0.22em; margin-bottom: 6px; }
+  .lp-hero-word .br { display: none; }
+
+  .lp-hero-grid { grid-template-columns: 1fr; gap: 28px; padding-top: 0; text-align: center; }
+  .lp-arch { order: 1; width: min(62vw, 320px); margin: -9vw auto 8px; }
+  .lp-hero-left { order: 2; }
+  .lp-hero-right { order: 3; align-items: center; }
+  .lp-hero-right p { max-width: 460px; }
+  .lp-hero-right .lp-btn { width: 100%; max-width: 420px; }
+
+  .lp-quote { padding: 48px 24px 44px; }
+  .lp-quote .q-open { position: static; display: block; transform: none; font-size: 72px; line-height: 0.6; margin-bottom: 10px; }
+  .lp-quote .q-close { display: none; }
+
+  .lp-panels {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding: 0 20px;
+    scroll-padding-left: 20px;
+    scrollbar-width: none;
+  }
+  .lp-panels::-webkit-scrollbar { display: none; }
+  .lp-panel { flex: 0 0 76vw; max-width: 340px; scroll-snap-align: start; border-radius: 2px; }
+  .lp-styles-note .swipe { display: block; margin-bottom: 6px; color: var(--gold-soft); }
+
+  .lp-specs { grid-template-columns: 1fr; gap: 36px; padding: 72px 20px; }
+  .lp-specs-photo { max-width: 520px; margin: 0 auto; }
+
+  .lp-prices, .lp-steps, .lp-faq, .lp-final { padding: 72px 20px; }
+  .lp-steps ol { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 560px) {
+  .hide-sm { display: none; }
+  .lp-header { padding: 14px 16px; }
+  .lp-wordmark { height: 24px; }
+  .lp-brand img:first-child { width: 34px; height: 34px; }
+  .lp-header .lp-btn-sm { padding: 9px 12px; font-size: 12.5px; }
+
+  .lp-price-table .row { grid-template-columns: 1fr auto; padding: 16px 12px; row-gap: 2px; }
+  .lp-price-table .row.head { display: none; }
+  .lp-price-table .qty { grid-column: 1; }
+  .lp-price-table .unit { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .lp-price-table .total { grid-column: 1; text-align: left !important; font-size: 13.5px; }
+  .lp-price-table .total::before { content: "Total "; }
+  .lp-price-table .unit::after { content: " /un"; font-family: var(--sans); font-size: 12px; font-weight: 500; color: var(--ink-2); }
+  .lp-price-table .tag { display: block; width: max-content; margin: 6px 0 0; }
+
+  .lp-btn { width: 100%; }
+  .lp-header .lp-btn, .lp-panel-body .lp-btn { width: auto; }
+}

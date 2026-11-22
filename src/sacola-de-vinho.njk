@@ -1,0 +1,217 @@
+---
+layout: layouts/base.njk
+permalink: /sacola-de-vinho/
+title: "Sacola de vinho personalizada | Uma Sacola"
+description: "Sacolas de vinho personalizadas com a sua marca: papel offset 180 g, alça de gorgurão e reforço na base e na alça. Para adegas, vinícolas, empórios e presentes corporativos."
+ogImage: "https://umasacola.com.br/images/vinho/vinho-hero.jpg"
+pageCss: "/assets/css/lp-vinho.css"
+pageFonts: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap"
+---
+{% from "icons/icon.njk" import icon %}
+{%- set wa = "https://wa.me/" + site.whatsappDigits + "?text=" -%}
+{%- set msgBase = "Olá! Vim pela página da Sacola de Vinho e quero um orçamento." -%}
+{%- set vinho = null -%}{%- for p in products.list -%}{%- if p.id == "vinho" -%}{%- set vinho = p -%}{%- endif -%}{%- endfor -%}
+{%- set qtys = [50, 100, 200, 500, 1000] -%}
+{%- set estilos = [
+  { slug: "preto-ouro",  nome: "Preto & Ouro",   texto: "Sofisticação para adegas e rótulos premium.",      img: "/images/vinho/estilo-preto-ouro.jpg" },
+  { slug: "verde-adega", nome: "Verde Adega",    texto: "Tradição que combina com vinícolas e empórios.",   img: "/images/vinho/estilo-verde-adega.jpg" },
+  { slug: "bordo",       nome: "Bordô Clássico", texto: "O tom do vinho para presentes corporativos.",      img: "/images/vinho/estilo-bordo.jpg" },
+  { slug: "marfim",      nome: "Marfim Minimal", texto: "Leveza para eventos, casamentos e brindes.",       img: "/images/vinho/estilo-marfim.jpg" }
+] -%}
+
+<div class="lp">
+
+  <div class="lp-topbar">
+    <span>Fábrica em Curitiba</span><span class="dot">·</span><span>Entregamos em todo o Brasil</span><span class="dot hide-sm">·</span><span class="hide-sm">Amostra virtual grátis</span>
+  </div>
+
+  <header class="lp-header">
+    <a href="/" class="lp-brand" aria-label="Uma Sacola — página inicial">
+      <img src="/images/logo.png" alt="" width="40" height="40" />
+      <img src="/images/logo-text.svg" alt="Uma Sacola" class="lp-wordmark" />
+    </a>
+    <a class="lp-btn lp-btn-outline lp-btn-sm" href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener" data-lp-cta="topo">
+      {{ icon("whatsapp", 16) }} Pedir orçamento
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="lp-hero">
+    <div class="lp-hero-word" aria-hidden="true">
+      <span class="small tl">Sacolas de</span>
+      <span class="big">VINHO</span>
+      <span class="small br">com a sua marca</span>
+    </div>
+
+    <div class="lp-hero-grid">
+      <div class="lp-hero-left">
+        <h1>
+          <span class="caps">Sacolas<br />à altura</span>
+          <em>do seu vinho</em>
+        </h1>
+      </div>
+
+      <div class="lp-arch">
+        <div class="lp-arch-frame" aria-hidden="true"></div>
+        <div class="lp-arch-img">
+          <img src="/images/vinho/vinho-hero.jpg" alt="Sacola de vinho azul-marinho com logo dourada e alça de gorgurão, em frente a um vinhedo" fetchpriority="high" />
+        </div>
+      </div>
+
+      <div class="lp-hero-right">
+        <p>Papel offset 180 g, alça de gorgurão e reforço na base e na alça. Sua marca em uma sacola feita para garrafas de vinho.</p>
+        <a class="lp-btn lp-btn-primary" href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener" data-lp-cta="hero">
+          {{ icon("whatsapp", 18) }} Pedir orçamento no WhatsApp
+        </a>
+        <span class="lp-hero-note">A partir de {{ (vinho.prices[1000] / 1000) | brl }} por unidade · mínimo de 50</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE -->
+  <section class="lp-quote">
+    <span class="q q-open" aria-hidden="true">&ldquo;</span>
+    <blockquote>O vinho é o presente. A sacola é a primeira impressão.</blockquote>
+    <span class="q q-close" aria-hidden="true">&rdquo;</span>
+    <div class="lp-quote-by">
+      <img src="/images/logo.png" alt="" width="32" height="32" />
+      <div><strong>Uma Sacola</strong><span>Sacolas personalizadas · Curitiba</span></div>
+    </div>
+  </section>
+
+  <!-- ESTILOS -->
+  <section class="lp-styles">
+    <div class="lp-styles-head">
+      <span class="eyebrow">Inspirações de estilo</span>
+      <h2>Escolha o estilo. <span class="nowrap">A marca é a sua.</span></h2>
+    </div>
+    <div class="lp-panels">
+      {% for e in estilos %}
+      <article class="lp-panel">
+        <div class="lp-panel-img"><img src="{{ e.img }}" alt="Sacola de vinho no estilo {{ e.nome }}" loading="lazy" width="688" height="1024" /></div>
+        <div class="lp-panel-body">
+          <h3>{{ e.nome }}</h3>
+          <p>{{ e.texto }}</p>
+          {%- set msgEstilo = "Olá! Vim pela página da Sacola de Vinho e gostei do estilo " + e.nome + ". Quero um orçamento." -%}
+          <a class="lp-btn lp-btn-gold lp-btn-sm" href="{{ wa }}{{ msgEstilo | urlencode }}" target="_blank" rel="noopener" data-lp-cta="estilo-{{ e.slug }}">Quero neste estilo</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="lp-styles-note"><span class="swipe">Arraste para o lado →</span> Imagens ilustrativas com marcas fictícias. A sua sacola sai com a sua marca e as suas cores.</p>
+  </section>
+
+  <!-- ESPECIFICAÇÕES -->
+  <section class="lp-specs">
+    <div class="lp-specs-photo">
+      <img src="/{{ vinho.photo }}" alt="Sacola de vinho com medidas: 12 cm de largura, 34 cm de altura e 9 cm de lateral" loading="lazy" />
+    </div>
+    <div class="lp-specs-body">
+      <span class="eyebrow">Acabamento</span>
+      <h2>Detalhes que valorizam o vinho</h2>
+      <ul>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/></svg></span>
+          <div><strong>Papel offset 180 g</strong><span>Encorpado, com toque fosco e impressão nítida.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2"/><rect x="4" y="10" width="16" height="11" rx="1"/></svg></span>
+          <div><strong>Alça de gorgurão</strong><span>Fita macia e resistente, que deixa a sacola elegante.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16h12"/><path d="M12 4v8"/><path d="M9 9l3 3 3-3"/></svg></span>
+          <div><strong>Reforço na base e na alça</strong><span>Mais firmeza para o peso da garrafa.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21L21 3"/><path d="M7 21l-4-4M11 17l-2-2M15 13l-2-2M19 9l-2-2"/></svg></span>
+          <div><strong>{{ vinho.dims }}</strong><span>Medida pensada para garrafas de vinho.</span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PREÇOS -->
+  <section class="lp-prices">
+    <span class="eyebrow">Investimento</span>
+    <h2>Quanto maior o lote, menor o preço por unidade</h2>
+    <div class="lp-price-table" role="table" aria-label="Preços da sacola de vinho">
+      <div class="row head" role="row">
+        <span role="columnheader">Quantidade</span><span role="columnheader">Por unidade</span><span role="columnheader">Total</span>
+      </div>
+      {% for q in qtys %}
+      {%- set total = vinho.prices[q] -%}
+      <div class="row{% if loop.last %} best{% endif %}" role="row">
+        <span role="cell" class="qty">{{ q | ptNumber }} unidades{% if loop.last %} <em class="tag">menor preço por unidade</em>{% endif %}</span>
+        <span role="cell" class="unit">{{ (total / q) | brl }}</span>
+        <span role="cell" class="total">{{ total | brl }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="lp-btn lp-btn-primary" href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener" data-lp-cta="precos">
+      {{ icon("whatsapp", 18) }} Quero um orçamento
+    </a>
+    <p class="lp-prices-note">Pagamento via Pix: 50% na aprovação da amostra e 50% na finalização do lote.</p>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="lp-steps">
+    <span class="eyebrow">Como funciona</span>
+    <h2>Do primeiro contato à entrega</h2>
+    <ol>
+      <li><span class="n">01</span><strong>Chame no WhatsApp</strong><span>Conte a quantidade e envie a sua logo.</span></li>
+      <li><span class="n">02</span><strong>Aprove a amostra virtual</strong><span>Aplicamos a sua arte na sacola e enviamos para você aprovar, sem custo.</span></li>
+      <li><span class="n">03</span><strong>Receba em 10 dias úteis</strong><span>Produção em Curitiba e entrega em todo o Brasil. Prazo contado a partir do pagamento da primeira parcela.</span></li>
+    </ol>
+  </section>
+
+  <!-- DÚVIDAS -->
+  <section class="lp-faq">
+    <span class="eyebrow">Dúvidas</span>
+    <h2>Perguntas frequentes</h2>
+    <div class="lp-faq-list">
+      <details><summary>Qual é o pedido mínimo?</summary><p>50 unidades.</p></details>
+      <details><summary>Vocês criam a arte?</summary><p>Não desenvolvemos a logo, mas aplicamos e ajustamos a sua arte na sacola e enviamos uma amostra virtual gratuita para você aprovar antes da produção.</p></details>
+      <details><summary>Posso escolher as cores da sacola?</summary><p>Sim. A sacola é impressa com a sua arte, então você define as cores da frente e das laterais.</p></details>
+      <details><summary>Qual é o prazo?</summary><p>10 dias úteis após o pagamento da primeira parcela.</p></details>
+      <details><summary>Como funciona o pagamento?</summary><p>Via Pix, em duas etapas: 50% após a aprovação da amostra e 50% na finalização do lote.</p></details>
+      <details><summary>Vocês entregam fora de Curitiba?</summary><p>Sim, entregamos em todo o Brasil.</p></details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="lp-final">
+    <h2>Sua marca merece chegar assim.</h2>
+    <p>Fale com a gente e receba uma amostra virtual da sua sacola de vinho.</p>
+    <a class="lp-btn lp-btn-gold" href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener" data-lp-cta="final">
+      {{ icon("whatsapp", 18) }} Pedir orçamento no WhatsApp
+    </a>
+  </section>
+
+  <footer class="lp-footer">
+    <div class="lp-footer-brand">
+      <img src="/images/logo.png" alt="" width="36" height="36" />
+      <img src="/images/logo-text.svg" alt="Uma Sacola" class="lp-wordmark light" />
+    </div>
+    <p>Fábrica em Curitiba. Entregamos em todo o Brasil.</p>
+    <div class="lp-footer-links">
+      <a href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener">{{ icon("whatsapp", 15) }} {{ site.whatsapp }}</a>
+      <a href="https://instagram.com/{{ site.instagram | replace('@', '') }}" target="_blank" rel="noopener">{{ icon("instagram", 15) }} {{ site.instagram }}</a>
+      <a href="/">Ver todas as sacolas →</a>
+    </div>
+    <small>© {{ site.year }} Uma Sacola</small>
+  </footer>
+
+  <a class="lp-wa-float" data-wa-float href="{{ wa }}{{ msgBase | urlencode }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-lp-cta="flutuante">
+    {{ icon("whatsapp", 28) }}
+  </a>
+</div>
+<script>
+  // Botão flutuante do WhatsApp aparece depois que a pessoa passa do topo
+  (function () {
+    var b = document.querySelector("[data-wa-float]");
+    if (!b) return;
+    var onScroll = function () { b.classList.toggle("show", window.scrollY > 560); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
