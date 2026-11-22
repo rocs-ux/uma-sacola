@@ -13,6 +13,8 @@
   --ink-2: #5e5246;
   --navy: #07254c;
   --navy-2: #0b2e5c;
+  --celeste: #262a33;   /* azul da sacola Domaine Céleste */
+  --celeste-2: #343a48;
   --night: #15100c;
   --wa: #25d366;
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -68,6 +70,8 @@ p { margin: 0; }
 .lp-btn svg { flex: none; }
 .lp-btn-primary { background: var(--navy); color: var(--paper); }
 .lp-btn-primary:hover { background: var(--navy-2); }
+.lp-btn-celeste { background: var(--celeste); color: var(--paper); }
+.lp-btn-celeste:hover { background: var(--celeste-2); }
 .lp-btn-gold { background: var(--gold); color: #fff; }
 .lp-btn-gold:hover { background: var(--gold-deep); }
 .lp-btn-outline { border-color: var(--navy); color: var(--navy); background: transparent; }
@@ -92,7 +96,7 @@ p { margin: 0; }
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .lp-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.lp-brand img:first-child { border-radius: 9px; }
+.lp-brand img { display: block; height: 44px; width: auto; }
 .lp-wordmark { height: 28px; width: auto; }
 .lp-wordmark.light { filter: brightness(0) invert(1); }
 
@@ -255,7 +259,7 @@ p { margin: 0; }
 .lp-panel-body .lp-btn { margin-top: auto; }
 .lp-panel-body p + .lp-btn { margin-top: 8px; }
 .lp-styles-note {
-  padding: 18px 24px 22px;
+  padding: 0 24px 34px;
   text-align: center;
   font-size: 12.5px;
   color: rgba(251, 247, 239, 0.6);
@@ -432,8 +436,7 @@ p { margin: 0; }
   .hide-sm { display: none; }
   .lp-header { padding: 14px 16px; }
   .lp-wordmark { height: 24px; }
-  .lp-brand img:first-child { width: 34px; height: 34px; }
-  .lp-header .lp-btn-sm { padding: 9px 12px; font-size: 12.5px; }
+  .lp-brand img { height: 38px; }
 
   .lp-price-table .row { grid-template-columns: 1fr auto; padding: 16px 12px; row-gap: 2px; }
   .lp-price-table .row.head { display: none; }
