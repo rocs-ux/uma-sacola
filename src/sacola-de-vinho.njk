@@ -51,6 +51,8 @@ pageFonts: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wgh
         <div class="lp-arch-frame" aria-hidden="true"></div>
         <div class="lp-arch-img">
           <img src="/images/vinho/vinho-hero.jpg" alt="Sacola de vinho azul-marinho com logo dourada e alça de gorgurão, em frente a um vinhedo" fetchpriority="high" />
+          <span class="lp-arch-word" aria-hidden="true">VINHO</span>
+          <img class="lp-arch-cutout" src="/images/vinho/vinho-hero-sacola.webp" alt="" aria-hidden="true" loading="lazy" />
         </div>
       </div>
 
@@ -196,6 +198,24 @@ pageFonts: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wgh
   </a>
 </div>
 <script>
+  // Contorno das letras "NH" atrás da sacola (só no computador):
+  // alinha a cópia da palavra dentro da foto com a palavra "VINHO" de fora.
+  (function () {
+    var big = document.querySelector(".lp-hero-word .big");
+    var box = document.querySelector(".lp-arch-img");
+    var word = document.querySelector(".lp-arch-word");
+    if (!big || !box || !word) return;
+    function align() {
+      var b = big.getBoundingClientRect(), a = box.getBoundingClientRect();
+      word.style.left = (b.left - a.left) + "px";
+      word.style.top = (b.top - a.top) + "px";
+    }
+    align();
+    window.addEventListener("resize", align);
+    window.addEventListener("load", align);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+  })();
+
   // Botão flutuante do WhatsApp aparece depois que a pessoa passa do topo
   (function () {
     var b = document.querySelector("[data-wa-float]");
