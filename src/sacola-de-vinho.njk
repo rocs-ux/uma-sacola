@@ -52,6 +52,15 @@ pageFonts: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wgh
         <div class="lp-arch-img">
           <img src="/images/vinho/vinho-hero.jpg" alt="Sacola de vinho azul-marinho com logo dourada e alça de gorgurão, em frente a um vinhedo" fetchpriority="high" />
           <span class="lp-arch-word" aria-hidden="true">VINHO</span>
+          <svg class="lp-svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <!-- Contorno só pela borda de fora das letras (sem as emendas internas do H) -->
+            <filter id="lp-contorno" x="-2%" y="-5%" width="104%" height="110%" color-interpolation-filters="sRGB">
+              <feMorphology in="SourceAlpha" operator="dilate" radius="1.4" result="engrossada" />
+              <feComposite in="engrossada" in2="SourceAlpha" operator="out" result="anel" />
+              <feFlood flood-color="#f4e6c4" flood-opacity="0.62" />
+              <feComposite in2="anel" operator="in" />
+            </filter>
+          </svg>
           <img class="lp-arch-cutout" src="/images/vinho/vinho-hero-sacola.webp" alt="" aria-hidden="true" loading="lazy" />
         </div>
       </div>
